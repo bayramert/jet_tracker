@@ -1,0 +1,31 @@
+# Python önbellek dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sanal ortam klasörleri
+venv/
+env/
+.venv/
+
+# Geliştirme ortamı (IDE) dosyaları
+.vscode/
+.idea/
+
+# Veri Seti ve YOLO Çıktıları (GitHub'a yüklenmemeli)
+roboflow_dataset/
+runs/
+
+# Video ve Görsel Dosyaları (Girdi ve Çıktılar)
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.jfif
+*.jpg
+*.png
+
+# Model ağırlıkları (GitHub dosya boyutu sınırlarına takılmamak için)
+# Kendi eğittiğin best.pt veya yolov8n.pt gibi dosyaları depoda tutmak 
+# istersen aşağıdaki satırı silebilirsin.
+*.pt
