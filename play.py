@@ -1,10 +1,25 @@
 import cv2                                             # OpenCV: video okuma/yazma ve görüntü gösterme
+from tkinter import Tk, filedialog
 from ultralytics import YOLO                           # YOLO modelini içe aktar
 
 model_path = r"C:\Users\USER\Desktop\jet_tracker\runs\detect\train2\weights\best.pt"  # En iyi ağırlıkların yolu
 model = YOLO(model_path)                               # Eğitilmiş ağırlıkları yükle
 
-video_path = r"C:\Users\USER\Desktop\jet_tracker\F-16xdd.mp4"  # Girdi video yolu
+root = Tk()
+root.withdraw()
+video_path = filedialog.askopenfilename(
+    title="Islenecek videoyu sec",
+    initialdir=r"C:\Users\USER\Desktop\jet_tracker",
+    filetypes=[
+        ("Video dosyalari", "*.mp4 *.avi *.mov *.mkv *.wmv"),
+        ("Tum dosyalar", "*.*"),
+    ],
+)
+root.destroy()
+
+if not video_path:
+    raise SystemExit("Video secilmedi, program kapatildi.")
+
 cap = cv2.VideoCapture(video_path)                     # Videoyu aç
 if not cap.isOpened():                                 # Açılamadıysa (yol hatası / codec vs.)
     raise SystemExit(f"Video açılamadı: {video_path}") # Hata ver ve çık
